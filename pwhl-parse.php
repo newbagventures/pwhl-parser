@@ -17,8 +17,6 @@ while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
         echo "Found $total_elements_in_details in details variable.\n";
 
         for( $i = 0; $i < $total_elements_in_details; $i++ ) {
-            echo "<p>We are on key $i<br />\n";
-            echo "The first 10 characters are: " . str_replace( "<p>", "", str_replace( "</p>", "", substr( $line_array[ $i ], 0, 10 ) ) ) . "<br />\n";
             if( substr_count( strtolower( $line_array[$i] ), "material", 0, 15 ) > 0 ) {
                 echo "<strong>Found Material Details</strong>: " . str_replace( "<p>", "", str_replace( "</p>", "", $line_array[$i] ) );
             }
