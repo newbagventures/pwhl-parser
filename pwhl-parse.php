@@ -18,7 +18,7 @@ while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
 
         for( $i = 0; $i < $total_elements_in_details; $i++ ) {
             echo "<p>We are on key $i<br />\n";
-            if( substr_count( strtolower( $line_array[$i] ), "material" ) > 0 ) {
+            if( substr_count( strtolower( $line_array[$i] ), "material", 0, 10 ) > 0 ) {
                 echo "<strong>Found Material Details</strong><br />\n" . $line_array[$i];
             }
             if( substr_count( strtolower( $line_array[$i] ), "care" ) > 0 ) {
