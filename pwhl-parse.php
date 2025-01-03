@@ -12,7 +12,7 @@ $total_changes = 0;
 
 while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
      if( ($line[4] != "") && ($i > 0) ) {
-        $line_array = explode( "\r", $line[4] );
+        $line_array = explode( "\n", $line[4] );
         $total_elements_in_details = count( $line_array );
         echo "Found $total_elements_in_details in details variable.\n";
         die();
