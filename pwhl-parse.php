@@ -15,17 +15,17 @@ while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
         $line_array = explode( "\n", $line[4] );
         $total_elements_in_details = count( $line_array );
         echo "Found $total_elements_in_details in details variable.\n";
-        die();
-        foreach( $line_array AS $key=>$val ) {
-            echo "<p>" . $key . " :: " . $val . "</p>\n";
-            if( substr_count( strtolower( $val ), "material", 0, ( strlen( "material" ) + 1) ) > 0 ) {
-                echo "<p><strong>Found Material Details</strong></p>\n" . $val;
+
+        for( $i = 0; $i < $total_elements_in_details; $i++ ) {
+            echo "<p>We are on key $key :: " . $line_array[$i] . "</p>\n";
+            if( substr_count( strtolower( $line_array[$i] ), "material", 0, ( strlen( "material" ) + 1) ) > 0 ) {
+                echo "<p><strong>Found Material Details</strong></p>\n" . $line_array[$i];
             }
-            if( substr_count( strtolower( $val ), "care", 0, ( strlen( "care" ) + 1 ) ) > 0 ) {
-                echo "<p><strong>Found Care Instructions</strong></p>\n" . $val;
+            if( substr_count( strtolower( $line_array[$i] ), "care", 0, ( strlen( "care" ) + 1 ) ) > 0 ) {
+                echo "<p><strong>Found Care Instructions</strong></p>\n" . $line_array[$i];
             }
-            if( substr_count( strtolower( $val ), "fit", 0, ( strlen( "fit" ) + 1 ) ) > 0 ) {
-                echo "<p><strong>Found Fit Info</strong></p>\n" . $val;
+            if( substr_count( strtolower( $line_array[$i] ), "fit", 0, ( strlen( "fit" ) + 1 ) ) > 0 ) {
+                echo "<p><strong>Found Fit Info</strong></p>\n" . $line_array[$i];
             }
         }
         $line[2] = "THIS FIELD GOT CHANGED";
