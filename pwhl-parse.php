@@ -18,10 +18,10 @@ while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
 
         for( $i = 0; $i < $total_elements_in_details; $i++ ) {
             echo "<p>We are on key $i<br />\n";
-            if( substr_count( strtolower( $line_array[$i] ), "material", 0, ( strlen( "material" ) + 1) ) > 0 ) {
+            if( substr_count( strtolower( $line_array[$i] ), "material" ) > 0 ) {
                 echo "<strong>Found Material Details</strong><br />\n" . $line_array[$i];
             }
-            if( substr_count( strtolower( $line_array[$i] ), "care", 0, ( strlen( "care" ) + 1 ) ) > 0 ) {
+            if( substr_count( strtolower( $line_array[$i] ), "care" ) > 0 ) {
                 echo "<strong>Found Care Instructions</strong><br />\n" . $line_array[$i];
             }
             if( substr_count( strtolower( $line_array[$i] ), "fit", 0, ( strlen( "fit" ) + 1 ) ) > 0 ) {
