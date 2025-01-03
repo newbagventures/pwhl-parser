@@ -17,16 +17,17 @@ while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
         echo "Found $total_elements_in_details in details variable.\n";
 
         for( $i = 0; $i < $total_elements_in_details; $i++ ) {
-            echo "<p>We are on key $key :: " . $line_array[$i] . "</p>\n";
+            echo "<p>We are on key $i<br />\n";
             if( substr_count( strtolower( $line_array[$i] ), "material", 0, ( strlen( "material" ) + 1) ) > 0 ) {
-                echo "<p><strong>Found Material Details</strong></p>\n" . $line_array[$i];
+                echo "<strong>Found Material Details</strong><br />\n" . $line_array[$i];
             }
             if( substr_count( strtolower( $line_array[$i] ), "care", 0, ( strlen( "care" ) + 1 ) ) > 0 ) {
-                echo "<p><strong>Found Care Instructions</strong></p>\n" . $line_array[$i];
+                echo "<strong>Found Care Instructions</strong><br />\n" . $line_array[$i];
             }
             if( substr_count( strtolower( $line_array[$i] ), "fit", 0, ( strlen( "fit" ) + 1 ) ) > 0 ) {
-                echo "<p><strong>Found Fit Info</strong></p>\n" . $line_array[$i];
+                echo "<strong>Found Fit Info</strong><br />\n" . $line_array[$i];
             }
+            echo "</p>\n";
         }
         $line[2] = "THIS FIELD GOT CHANGED";
         fputcsv( $fh1, $line ) or die( "Something went wrong with writing the entry $total_changes" );
@@ -39,4 +40,3 @@ fclose( $fh );
 fclose( $fh1 );
 
 echo "<p>Total required changes = $total_changes</p>";
-?>
