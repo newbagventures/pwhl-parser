@@ -11,11 +11,8 @@ $i = 0;
 $total_changes = 0;
 
 while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
-    if( $i == 0 ) {
-        echo "<p>" . print_r( $line, true ) . "<p>\n";
-    }
-    if( ($line[4] != "") && ($i > 0) ) {
-        $line_array = explode( "</p><p>", $line[4] );
+     if( ($line[4] != "") && ($i > 0) ) {
+        $line_array = explode( "\r", $line[4] );
         echo "<p><strong>Line array: </strong>" . print_r( $line_array, true );
         foreach( $line_array AS $key=>$val ) {
             echo "<p>" . $key . " :: " . $val . "</p>\n";
