@@ -19,10 +19,10 @@ while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
         for( $i = 0; $i < $total_elements_in_details; $i++ ) {
             echo "<p>We are on key $i<br />\n";
             echo "The first 10 characters are: " . substr( $line_array[ $i ], 0, 10 ) . "<br />\n";
-            if( substr_count( strtolower( $line_array[$i] ), "material" ) > 0 ) {
+            if( substr_count( strtolower( $line_array[$i] ), "material", 0, 15 ) > 0 ) {
                 echo "<strong>Found Material Details</strong>: " . str_replace( "<p>", "", str_replace( "</p>", "", $line_array[$i] ) );
             }
-            if( substr_count( strtolower( $line_array[$i] ), "care" ) > 0 ) {
+            if( substr_count( strtolower( $line_array[$i] ), "care", 0, 10 ) > 0 ) {
                 echo "<strong>Found Care Instructions</strong>: " . str_replace( "<p>", "", str_replace( "</p>", "", $line_array[$i] ) );
             }
             if( substr_count( strtolower( $line_array[$i] ), "fit", 0, 10 ) > 0 ) {
