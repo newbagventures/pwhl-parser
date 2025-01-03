@@ -24,7 +24,7 @@ while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
             if( substr_count( strtolower( $line_array[$i] ), "care" ) > 0 ) {
                 echo "<strong>Found Care Instructions</strong>: " . str_replace( "<p>", "", str_replace( "</p>", "", $line_array[$i] ) );
             }
-            if( substr_count( strtolower( $line_array[$i] ), "fit" ) > 0 ) {
+            if( substr_count( strtolower( $line_array[$i] ), "fit", 0, 10 ) > 0 ) {
                 echo "<strong>Found Fit Info</strong>: " . str_replace( "<p>", "", str_replace( "</p>", "", $line_array[$i] ) );
             }
             echo "</p>\n";
