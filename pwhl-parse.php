@@ -13,7 +13,9 @@ $total_changes = 0;
 while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
      if( ($line[4] != "") && ($i > 0) ) {
         $line_array = explode( "\r", $line[4] );
-        echo "<p><strong>Line array: </strong>" . print_r( $line_array, true );
+        $total_elements_in_details = count( $line_array );
+        echo "Found $total_elements_in_details in details variable.\n";
+        die();
         foreach( $line_array AS $key=>$val ) {
             echo "<p>" . $key . " :: " . $val . "</p>\n";
             if( substr_count( strtolower( $val ), "material", 0, ( strlen( "material" ) + 1) ) > 0 ) {
