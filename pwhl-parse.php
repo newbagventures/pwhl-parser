@@ -16,6 +16,12 @@ while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
         $total_elements_in_details = count( $line_array );
         echo "Found $total_elements_in_details in details variable.\n";
 
+        if( $total_elements_in_details > 4 ) {
+            echo "<p>Got this weirdness - $total_elements_in_details elements.</p>\n";
+            echo "<p>" . print_r( $line_array, true ) . "</p>\n";
+            die();
+        }
+
         for( $i = 0; $i < $total_elements_in_details; $i++ ) {
             if( substr_count( strtolower( $line_array[$i] ), "material", 0, 15 ) > 0 ) {
                 echo "<strong>Found Material Details</strong>: " . str_replace( "<p>", "", str_replace( "</p>", "", $line_array[$i] ) );
