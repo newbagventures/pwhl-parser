@@ -20,6 +20,9 @@ while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
             echo "<p>Got this weirdness - $total_elements_in_details elements.</p>\n";
             echo "<p>" . print_r( $line_array, true ) . "</p>\n";
             die();
+        } else {
+            echo "<p>Got this normalcy - $total_elements_in_details elements.</p>\n";
+            echo "<p>" . print_r( $line_array, true ) . "</p>\n";
         }
 
         for( $i = 0; $i < $total_elements_in_details; $i++ ) {
