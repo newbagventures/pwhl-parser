@@ -27,17 +27,17 @@ while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
         }
         */
 
-        for( $i = 0; $i < $total_elements_in_details; $i++ ) {
-            $this_detail = strtolower( str_replace("<p>", "", str_replace("</p>", "", $line_array[$i])));
+        for( $n = 0; $n < $total_elements_in_details; $n++ ) {
+            $this_detail = strtolower( str_replace("<p>", "", str_replace("</p>", "", $line_array[$n])));
             if( strlen( $this_detail ) >= 10 ) {
                 if (substr_count($this_detail, "material", 0, 15) > 0) {
                     echo "<strong>Found Material Details</strong>: " . $this_detail;
-                }
-                if (substr_count($this_detail, "care", 0, 10) > 0) {
+                } elseif (substr_count($this_detail, "care", 0, 10) > 0) {
                     echo "<strong>Found Care Instructions</strong>: " . $this_detail;
-                }
-                if (substr_count($this_detail, "fit", 0, 10) > 0) {
+                } elseif (substr_count($this_detail, "fit", 0, 10) > 0) {
                     echo "<strong>Found Fit Info</strong>: " . $this_detail;
+                } else {
+                    echo "$n [" . $this_detail . "] found nothing";
                 }
             }
             echo "</p>\n";
