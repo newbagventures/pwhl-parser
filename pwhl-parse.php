@@ -16,6 +16,7 @@ while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
         $total_elements_in_details = count( $line_array );
         echo "Found $total_elements_in_details in details variable.\n";
 
+        /*
         if( $total_elements_in_details > 4 ) {
             echo "<p>Got this weirdness - $total_elements_in_details elements.</p>\n";
             echo "<p>" . print_r( $line_array, true ) . "</p>\n";
@@ -24,6 +25,7 @@ while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
             echo "<p>Got this normalcy - $total_elements_in_details elements.</p>\n";
             echo "<p>" . print_r( $line_array, true ) . "</p>\n";
         }
+        */
 
         for( $i = 0; $i < $total_elements_in_details; $i++ ) {
             $this_detail = strtolower( str_replace("<p>", "", str_replace("</p>", "", $line_array[$i])));
