@@ -38,7 +38,8 @@ while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
                     echo "<strong>Found Fit Info</strong>: " . $this_detail;
                 } else {
                     echo "$n [" . $this_detail . "] found nothing<br />\n";
-                    echo "Found *care* in position " . strpos( $this_detail, "care" );
+                    echo "Found *care* in position " . strpos( $this_detail, "care" ) . "<br />\n";
+                    echo $line[4] . "<br />\n";
                 }
             }
             echo "</p>\n";
