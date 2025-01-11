@@ -77,7 +77,6 @@ while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
             fputcsv($fh1, $line) or die("Something went wrong with writing the entry $total_changes");
             $total_changes++;
         }
-     }
     }
     echo "<hr />\n";
     $i++;
