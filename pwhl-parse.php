@@ -7,7 +7,7 @@ $fh1 = fopen( "us-products-export-updated.csv", "a" ) or die( "Couldn't open the
 
 echo "<h2>$total_lines total lines in the file</h2>\n";
 echo "<h2>Source File: <a href=\"us-products-export.csv\">US Products Export.csv</a></h2>";
-echo "<h2>Result File for Import to Shopify: <a href=\"us-products-export-updated.csv\">US Products Export Updated.csv</a></h2>";
+echo "<h2>Result File for Import to Shopify: <a href=\"us-products-export-updated.csv.zip\">US Products Export Updated.csv</a></h2>";
 echo "<p>&nbsp;</p><p>&nbsp;</p><hr /><p>&nbsp;</p><p>&nbsp;</p>\n";
 
 $i = 0;
@@ -82,5 +82,12 @@ while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
 }
 fclose( $fh );
 fclose( $fh1 );
+
+$zip = new ZipArchive();
+$filename = "us-products-export-updated.csv" . ".zip";
+if ($zip->open($filename) === TRUE) {
+    $zip->addFile("us-products-export-updated.csv" );
+    $zip->close();
+}
 
 echo "<p>Total required changes = $total_changes</p>";
