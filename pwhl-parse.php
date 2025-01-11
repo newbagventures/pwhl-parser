@@ -11,10 +11,15 @@ $i = 0;
 $total_changes = 0;
 
 while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
+    array_push( $line, "Materials Debugging", "Care Debugging", "Fit Debugging" );
+    if( $i == 0 ) {
+        fputcsv( $fh1, $line ) or die( "Something went wrong with writing the entry $total_changes" );
+        print_r( $line );
+    }
      if( ($line[4] != "") && ($i > 0) ) {
         $line_array = explode( "\n", $line[4] );
         $total_elements_in_details = count( $line_array );
-        echo "Found $total_elements_in_details in details variable for ".$line[0] ." ". $line[1] .".<br />\n";
+        echo "Record " . ($i+1) . ". Found $total_elements_in_details in details variable for ".$line[0] ." ". $line[1] .".<br />\n";
 
         /*
         if( $total_elements_in_details > 4 ) {
