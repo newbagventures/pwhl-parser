@@ -21,7 +21,7 @@ while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
      if( ($line[4] != "") && ($i > 0) ) {
         $line_array = explode( "\n", $line[4] );
         $total_elements_in_details = count( $line_array );
-        echo "<p>Record " . ($i) . ". Found $total_elements_in_details in details variable for ".$line[0] ." ". $line[1] .".</p>\n";
+        echo "<p style=\"color: red;\">Record " . ($i) . ". Found $total_elements_in_details in details variable for ".$line[0] ." <a href=\"https://shop.thepwhl.com/products/". $line[1] ."\">" . $line[1] . "</a>.</p>\n";
 
         /*
         if( $total_elements_in_details > 4 ) {
