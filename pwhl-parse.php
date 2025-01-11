@@ -11,7 +11,7 @@ $i = 0;
 $total_changes = 0;
 
 while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
-    array_push( $line, "Materials Debugging", "Care Debugging", "Fit Debugging" );
+    array_push( $line, "Materials Debugging", "Care Debugging", "Fit Debugging", "Specs Debuggin", "Features Debugging" );
     if( $i == 0 ) {
         fputcsv( $fh1, $line ) or die( "Something went wrong with writing the entry $total_changes" );
         print_r( $line );
@@ -36,20 +36,53 @@ while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
             $this_detail = strtolower( str_replace("<p>", "", str_replace("</p>", "", $line_array[$n])));
             if( strlen( $this_detail ) >= 10 ) {
                 if (substr_count($this_detail, "material", 0, 15) > 0) {
-                    echo "<strong>Found Material Details</strong>: " . $this_detail;
+                    echo "<strong>Found Materials and Care Instructions Part 1</strong>: " . $this_detail;
+                    $line[30] = $this_detail;
                 } elseif (substr_count($this_detail, "care", 0, 10) > 0) {
-                    echo "<strong>Found Care Instructions</strong>: " . $this_detail;
+                    echo "<strong>Found Materials and Care Instructions Part 2</strong>: " . $this_detail;
+                    $line[30] .= $this_detail;
                 } elseif (substr_count($this_detail, "fit", 0, 10) > 0) {
-                    echo "<strong>Found Fit Info</strong>: " . $this_detail;
+                    echo "<strong>Found Fit Information</strong>: " . $this_detail;
+                    $line[29] = $this_detail;
+                } elseif (substr_count($this_detail, "spec", 0, 10) > 0) {
+                    echo "<strong>Found Specs and Features</strong>: " . $this_detail;
+                    $line[31] = $this_detail;
                 } else {
                     echo "$n [" . $this_detail . "] found nothing<br />\n";
-                    echo "Found *care* in position " . strpos( $this_detail, "care" ) . "<br />\n";
-                    echo $line[4] . "<br />\n";
                 }
+            }
+            $found = strpos( $line_array[$n], "material" );
+            if( $found !== FALSE ) {
+                $line[36] = "Found the string [material] at position $found.\n";
+            } else {
+                $line[36] = "";
+            }
+            $found = strpos( $line_array[$n], "care" );
+            if( $found !== FALSE ) {
+                $line[37] = "Found the string [care] at position $found.\n";
+            } else {
+                $line[37] = "";
+            }
+            $found = strpos( $line_array[$n], "fit" );
+            if( $found !== FALSE ) {
+                $line[38] = "Found the string [fit] at position $found.\n";
+            } else {
+                $line[38] = "";
+            }
+            $found = strpos( $line_array[$n], "spec" );
+            if( $found !== FALSE ) {
+                $line[39] = "Found the string [spec] at position $found.\n";
+            } else {
+                $line[39] = "";
+            }
+            $found = strpos( $line_array[$n], "feature" );
+            if( $found !== FALSE ) {
+                $line[40] = "Found the string [feature] at position $found.\n";
+            } else {
+                $line[40] = "";
             }
             echo "</p>\n";
         }
-        $line[2] = "THIS FIELD GOT CHANGED";
         fputcsv( $fh1, $line ) or die( "Something went wrong with writing the entry $total_changes" );
         $total_changes++;
     }
