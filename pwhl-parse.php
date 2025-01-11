@@ -6,6 +6,9 @@ unlink( "us-products-export-updated.csv" );
 $fh1 = fopen( "us-products-export-updated.csv", "a" ) or die( "Couldn't open the new file for writing" );
 
 echo "<h2>$total_lines total lines in the file</h2>\n";
+echo "<h2>Source File: <a href=\"us-products-export.csv\">US Products Export.csv</a></h2>";
+echo "<h2>Result File for Import to Shopify: <a href=\"us-products-export-updated.csv\">US Products Export Updated.csv</a></h2>";
+echo "<p>&nbsp;</p><p>&nbsp;</p><hr /><p>&nbsp;</p><p>&nbsp;</p>\n";
 
 $i = 0;
 $total_changes = 0;
@@ -14,12 +17,11 @@ while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
     array_push( $line, "Materials Debugging", "Care Debugging", "Fit Debugging", "Specs Debuggin", "Features Debugging" );
     if( $i == 0 ) {
         fputcsv( $fh1, $line ) or die( "Something went wrong with writing the entry $total_changes" );
-        print_r( $line );
     }
      if( ($line[4] != "") && ($i > 0) ) {
         $line_array = explode( "\n", $line[4] );
         $total_elements_in_details = count( $line_array );
-        echo "Record " . ($i+1) . ". Found $total_elements_in_details in details variable for ".$line[0] ." ". $line[1] .".<br />\n";
+        echo "Record " . ($i) . ". Found $total_elements_in_details in details variable for ".$line[0] ." ". $line[1] .".<br />\n";
 
         /*
         if( $total_elements_in_details > 4 ) {
