@@ -25,7 +25,7 @@ while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
 
        for( $n = 0; $n < $total_elements_in_details; $n++ ) {
             $this_detail = strtolower( str_replace("<p>", "", str_replace("</p>", "", $line_array[$n])));
-            if( strlen( $this_detail ) >= 0 ) {
+            if( strlen( $this_detail ) > 0 ) {
                 if (substr_count($this_detail, "material", 0, 15) > 0) {
                     echo "<strong>Found Materials and Care Instructions Part 1</strong>: " . $this_detail;
                     $line[30] = $this_detail;
