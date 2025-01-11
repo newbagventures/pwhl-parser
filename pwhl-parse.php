@@ -14,8 +14,8 @@ $i = 0;
 $total_changes = 0;
 
 while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
-    array_push( $line, "Materials Debugging", "Care Debugging", "Fit Debugging", "Specs Debuggin", "Features Debugging" );
-    if( $i == 0 ) {
+   if( $i == 0 ) {
+        array_push( $line, "Materials Debugging", "Care Debugging", "Fit Debugging", "Specs Debuggin", "Features Debugging" );
         fputcsv( $fh1, $line ) or die( "Something went wrong with writing the entry $total_changes" );
     }
      if( ($line[4] != "") && ($i > 0) ) {
@@ -23,20 +23,9 @@ while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
         $total_elements_in_details = count( $line_array );
         echo "<p style=\"color: red;\">Record " . ($i) . ". Found $total_elements_in_details in details variable for ".$line[0] ." <a href=\"https://shop.thepwhl.com/products/". $line[1] ."\" target=\"_blank\">" . $line[1] . "</a>.</p>\n";
 
-        /*
-        if( $total_elements_in_details > 4 ) {
-            echo "<p>Got this weirdness - $total_elements_in_details elements.</p>\n";
-            echo "<p>" . print_r( $line_array, true ) . "</p>\n";
-            die();
-        } else {
-            echo "<p>Got this normalcy - $total_elements_in_details elements.</p>\n";
-            echo "<p>" . print_r( $line_array, true ) . "</p>\n";
-        }
-        */
-
-        for( $n = 0; $n < $total_elements_in_details; $n++ ) {
+       for( $n = 0; $n < $total_elements_in_details; $n++ ) {
             $this_detail = strtolower( str_replace("<p>", "", str_replace("</p>", "", $line_array[$n])));
-            if( strlen( $this_detail ) >= 10 ) {
+            if( strlen( $this_detail ) >= 0 ) {
                 if (substr_count($this_detail, "material", 0, 15) > 0) {
                     echo "<strong>Found Materials and Care Instructions Part 1</strong>: " . $this_detail;
                     $line[30] = $this_detail;
