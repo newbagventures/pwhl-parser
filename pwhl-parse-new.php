@@ -22,7 +22,7 @@ while( ( $line = fgetcsv( $fh ) ) !== FALSE ) {
         $line_array = explode( "\n", $line[4] );
         $total_elements_in_details = count( $line_array );
         echo ">Record " . ($i) . ". Found $total_elements_in_details in details variable for ".$line[0] ." <a href=\"https://shop.thepwhl.com/products/". $line[1] ."\" target=\"_blank\">" . $line[1] . "</a>.</p>\n";
-        if( in_array( $line[0], array( "9070440481089", "9070443135297" ) ) === FALSE ) {
+        if( in_array( $line[0], array( "9070440481089", "9070443135297", "9070445429057" ) ) === FALSE ) {
             for ($n = 0; $n < $total_elements_in_details; $n++) {
                 $this_detail = strtolower(str_replace("<p>", "", str_replace("</p>", "", $line_array[$n])));
                 if (strlen($this_detail) > 15) {
